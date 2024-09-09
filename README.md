@@ -312,3 +312,24 @@ in the parent app.component.html
 
 in the <a routerLink="***" routerLinkActive="active"></a> instead of href, we have to give routerLink="/about" etc.
 ```
+
+## Services
+> Definition: `Angular services provide a way for you to separate Angular app data and functions that can be used by multiple components in your app. To be used by multiple components, a service must be made injectable. Services that are injectable and used by a component become dependencies of that component.`
+
+ #### steps:
+        - ng g s test
+        - declare the data to be sent to other components inside the TestService class (eg: letters = ["a", "b", "c", "d"])
+        - Import test service into app.module.ts
+        - inside app.module.ts we have [providers]: [] -> pass TestService = [providers]: [TestService]
+        - Inside app.component.ts or any class component, inside constructor() -> constructor(private ts:TestService) 
+          /*import TestService into app component*/
+        - so we say letters = this.ts.letters
+        - In app.component.html
+          <div *ngFor = "let l of letters"> {{l}} </div>
+        - suppose we have other component, say add.component.html, we have a button in that, and function un ts file to implement
+          constructor(private ts:TestService) 
+          letters = this.ts.letters
+          add(){
+            this.ts.letters.push("e");
+          }
+        - The change will be reflected in the app component as well
