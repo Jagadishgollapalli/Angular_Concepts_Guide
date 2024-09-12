@@ -333,3 +333,24 @@ in the <a routerLink="***" routerLinkActive="active"></a> instead of href, we ha
             this.ts.letters.push("e");
           }
         - The change will be reflected in the app component as well
+
+# Lyfe Cycle Hooks
+  - ngOnChanges() - `Every time we change/ send/ receiving data from parent component to child component, we can log the changes/perform  any task using this Hook.(only executable in child component when data changes not in parent component)`
+    - **Imp** `onChanges() - will not be called for property changes or data changes, will be called only for address/reference change happened for variable.`
+
+  - **ngOnInit()** - `when we want to show the data on starting the application, we have to write the requirement in ngOnInit(), not in constructor().`
+      - $${\color{red} ngOnInit() vs Constructor()}$$ 
+      `Example: when data is coming from parent component to child component, when we call the constructor, the data will not be called, just it initializes the object for that particular component` - so we have use ngOnInit() instead of constructor
+      - `Most of the time we use constructor is to implement the dependency injection, ex: when we create a service and use it in the component`
+
+  - ngDoCheck() -  `This life cycle hook runs every time when data changes happen both in parent and child component, not based on the reference or address of the variable`
+
+  - ngAfterViewInit() - ``
+
+  - ngAfterViewChecked()
+
+  - ngAfterContentChecked()
+
+  - ngAfterContentInit()
+
+  - ngOnDestroy()
